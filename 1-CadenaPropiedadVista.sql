@@ -1,3 +1,4 @@
+--Cambios desde repo remoto
 --Se crea una base de datos 
 DROP DATABASE IF EXISTS Cruceros_ASGBD;
 GO
@@ -7,7 +8,7 @@ GO
 USE Cruceros_ASGBD;
 GO
 
---Se crea un esquema para guardar los objetos que se crearán para las pruebas
+--Se crea un esquema para guardar los objetos que se crearÃ¡n para las pruebas
 DROP SCHEMA IF EXISTS Contadores;
 GO
 CREATE SCHEMA Contadores;
@@ -38,21 +39,21 @@ CREATE TABLE Factura
 	fecha_emision DATE NOT NULL,
 	PRIMARY KEY (id_factura),
 	FOREIGN KEY (id_promocion) REFERENCES Promocion(id_promocion),
-	CHECK (metodo_pago IN ('Tarjeta de débito', 'Tarjeta de crédito','Efectivo','Transferencia','Otros'))
+	CHECK (metodo_pago IN ('Tarjeta de dÃ©bito', 'Tarjeta de crÃ©dito','Efectivo','Transferencia','Otros'))
 );
 GO
 
---En el documento se exportan datos por medio de un texto plano, en el script se añaden manualmente
+--En el documento se exportan datos por medio de un texto plano, en el script se aÃ±aden manualmente
 INSERT INTO Promocion (descripcion,valor_descuento,fecha_inicio,fecha_fin)
-VALUES ('Promoción de prueba',25.00,'2024-11-07','2025-03-02');
+VALUES ('PromociÃ³n de prueba',25.00,'2024-11-07','2025-03-02');
 GO
 
 INSERT INTO Factura (id_promocion,precio,metodo_pago,fecha_emision)
 VALUES
 (1,650,'Efectivo','2024-03-02'),
 (1,743,'Transferencia','2024-05-01'),
-(1,954,'Tarjeta de débito','2024-08-10'),
-(NULL,1300,'Tarjeta de crédito','2024-03-10');
+(1,954,'Tarjeta de dÃ©bito','2024-08-10'),
+(NULL,1300,'Tarjeta de crÃ©dito','2024-03-10');
 GO
 
 --Se crea una vista extrayendo algunos campos de la tabla Factura
@@ -91,10 +92,10 @@ GO
 --SELECT * FROM Factura;
 --GO
 
---Si se hace un SELECT Sobre la vista podemos observarla sin ningún problema
+--Si se hace un SELECT Sobre la vista podemos observarla sin ningÃºn problema
 SELECT * FROM Contadores.Facturas;
 GO
 
---Se restaura el contexto de ejecución
+--Se restaura el contexto de ejecuciÃ³n
 REVERT;
 GO
